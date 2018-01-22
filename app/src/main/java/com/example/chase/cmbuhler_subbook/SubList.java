@@ -7,10 +7,15 @@ import java.util.ArrayList;
  */
 
 public class SubList {
+    private static SubList mySubList = new SubList();
     private ArrayList<Subscription> subList;
 
-    public SubList(){
+    private SubList(){
         subList = loadSubList();
+    }
+
+    public static SubList getInstance(){
+        return mySubList;
     }
 
     private ArrayList<Subscription> loadSubList(){
@@ -18,4 +23,17 @@ public class SubList {
         //if it is not loaded
         return new ArrayList<Subscription>();
     }
+
+    public void add(Subscription sub){
+        subList.add(sub);
+        //Save to file
+    }
+
+    public void remove(Subscription sub){
+        subList.remove(sub);
+        //Remove from file
+    }
+
+
+
 }
