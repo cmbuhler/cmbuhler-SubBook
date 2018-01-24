@@ -7,13 +7,37 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ListView subList;
+    private TextView totalChargeValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        totalChargeValue = findViewById(R.id.totalChargeValue);
+        subList = findViewById(R.id.listView);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        updateList();
+    }
+
+    private void updateList(){
+
+        totalChargeValue.setText("$" + SubList.getInstance().getTotalCharge());
+        SubAdapter adapter = new SubAdapter(this, SubList.getInstance().getSubList());
+        subList.setAdapter(adapter);
     }
 
     /**
