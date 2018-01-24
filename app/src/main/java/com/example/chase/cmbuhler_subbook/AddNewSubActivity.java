@@ -30,9 +30,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.Month;
+
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class AddNewSubActivity extends AppCompatActivity {
 
@@ -143,14 +143,16 @@ public class AddNewSubActivity extends AppCompatActivity {
             return;
         }
 
-        Subscription newSub;
         if(subComment.getText().toString().isEmpty()) {
-            newSub = new Subscription(name, year, month, day, charge);
+            SubList.getInstance().add(
+                    name, year, month, day, charge
+            );
         } else {
-            newSub = new Subscription(name, year, month, day, charge);
+            SubList.getInstance().add(
+                    name, year, month, day, charge,
+                    subComment.getText().toString()
+            );
         }
-
-        SubList.getInstance().add(newSub);
         finish();
 
     }
