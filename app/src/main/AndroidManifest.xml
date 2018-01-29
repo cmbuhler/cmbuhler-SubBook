@@ -19,8 +19,13 @@
         <activity
             android:name=".AddNewSubActivity"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".SubDetailsActivity"
+        <activity
+            android:name=".SubDetailsActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".EditSubActivity"
+            android:parentActivityName=".SubDetailsActivity"></activity>
     </application>
 
 </manifest>

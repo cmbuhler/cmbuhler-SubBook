@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         totalChargeValue = findViewById(R.id.totalChargeValue);
         subListView = findViewById(R.id.listView);
         SubList.getInstance().init(this);
-        
+
         adapter = new SubAdapter(this, SubList.getInstance().getSubList());
         subListView.setAdapter(adapter);
 

@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 
 
@@ -38,6 +39,7 @@ public class AddNewSubActivity extends AppCompatActivity {
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView date;
+    private Button addButton;
     private int year, month, day;
     static final String STATE_YEAR = "subYear";
     static final String STATE_MONTH = "subMonth";
@@ -47,7 +49,7 @@ public class AddNewSubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_sub);
-
+        addButton = findViewById(R.id.add_new_sub);
         date = (TextView) findViewById(R.id.sub_date);
         calendar = Calendar.getInstance();
 
@@ -66,7 +68,12 @@ public class AddNewSubActivity extends AppCompatActivity {
         }
 
         showDate(year, month, day);
-
+        addButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View button){
+                addNewSub(button);
+            }
+        });
 
     }
 

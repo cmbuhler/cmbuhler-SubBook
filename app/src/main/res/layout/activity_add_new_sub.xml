@@ -78,7 +78,6 @@
         android:layout_marginStart="16dp"
         android:text="@string/sub_add_button"
         android:textSize="24sp"
-        android:onClick="addNewSub"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

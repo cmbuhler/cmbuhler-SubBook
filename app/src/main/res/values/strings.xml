@@ -2,6 +2,7 @@
     <string name="app_name">cmbuhler-SubBook</string>
     <string name="total_charge">Total monthly charge:</string>
     <string name="new_sub">New Subscription</string>
+    <string name="edit_sub">Edit Subscription</string>
     <string name="sub_name">Subscription Name</string>
     <string name="sub_data">Start date:</string>
     <string name="sub_charge">Monthly Charge:</string>

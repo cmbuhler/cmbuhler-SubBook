@@ -44,6 +44,8 @@ public class SubDetailsActivity extends AppCompatActivity {
         commentView = findViewById(R.id.subCommentValue);
 
         Button deleteButton = findViewById(R.id.buttonDelete);
+        Button editButton = findViewById(R.id.buttonEdit);
+
         final Context context = this;
         deleteButton.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -80,6 +82,18 @@ public class SubDetailsActivity extends AppCompatActivity {
                 alert11.show();
             }
         });
+
+        editButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View button){
+                Intent intent = new Intent(context, EditSubActivity.class);
+
+                intent.putExtra("pos", position);
+
+                startActivity(intent);
+            }
+        });
+
 
     }
 
