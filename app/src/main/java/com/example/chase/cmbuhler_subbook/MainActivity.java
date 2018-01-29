@@ -12,13 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SubAdapter adapter;
     private ListView subListView;
     private TextView totalChargeValue;
+    private SubAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         totalChargeValue = findViewById(R.id.totalChargeValue);
         subListView = findViewById(R.id.listView);
-
+        SubList.getInstance().init(this);
+        
         adapter = new SubAdapter(this, SubList.getInstance().getSubList());
         subListView.setAdapter(adapter);
 
         final Context context = this;
+
         subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("sub_pos", position);
 
                 startActivity(intent);
+
             }
         });
     }
@@ -61,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateList(){
 
-        totalChargeValue.setText("$" + SubList.getInstance().getTotalCharge());
+        String dollarText = String.format("$%.2f", SubList.getInstance().getTotalCharge());
+        totalChargeValue.setText(dollarText);
         adapter.notifyDataSetChanged();
     }
 

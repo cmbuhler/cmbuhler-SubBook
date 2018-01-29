@@ -9,8 +9,7 @@ package com.example.chase.cmbuhler_subbook;
  * DatePicker example:
  * Retrieved 2018-01-22
  * https://www.tutorialspoint.com/android/android_datepicker_control.htm
- * with some modifications to use newer DialogFragments aswell as saving
- * activity state.
+ *
  */
 
 

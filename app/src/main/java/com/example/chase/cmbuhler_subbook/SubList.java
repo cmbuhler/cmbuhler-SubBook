@@ -1,5 +1,18 @@
 package com.example.chase.cmbuhler_subbook;
 
+import android.content.Context;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
@@ -7,22 +20,22 @@ import java.util.ArrayList;
  */
 
 public class SubList {
+    private final static String FILENAME = "subdata.sav";
     private static SubList mySubList = new SubList();
     private float totalCharge;
     private ArrayList<Subscription> subList;
+    private Context context;
 
     private SubList(){
-        subList = loadSubList();
+    }
+
+    public void init(Context context){
+        this.context = context;
+        loadFromFile();
     }
 
     public static SubList getInstance(){
         return mySubList;
-    }
-
-    private ArrayList<Subscription> loadSubList(){
-        //Load the subscription list from the file
-        //if it is not loaded
-        return new ArrayList<Subscription>();
     }
 
     public ArrayList<Subscription> getSubList(){
@@ -42,11 +55,45 @@ public class SubList {
         totalCharge = totalCharge + charge;
         Subscription sub = new Subscription(name, year, month, day, charge, comment);
         subList.add(sub);
+        updateFile();
+    }
+
+    private void updateFile(){
+        try {
+
+            FileOutputStream fos = context.openFileOutput(FILENAME,
+
+                    Context.MODE_PRIVATE);
+
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+
+
+
+            Gson gson = new Gson();
+
+
+
+            gson.toJson(subList, out);
+
+
+
+            out.flush();
+
+        } catch (FileNotFoundException e) {
+
+            // TODO Auto-generated catch block
+
+            e.printStackTrace();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void remove(int position){
         totalCharge = totalCharge - subList.get(position).getCharge();
         subList.remove(position);
+        updateFile();
         //Remove from file
     }
 
@@ -54,6 +101,33 @@ public class SubList {
         return subList.get(position);
     }
 
+    public void loadFromFile(){
+        try {
 
+            FileInputStream fis = context.openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+
+
+            Gson gson = new Gson();
+
+
+            // taken https://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
+
+            // 2018 - 01 - 24
+
+
+            Type listType = new TypeToken<ArrayList<Subscription>>() {
+            }.getType();
+
+
+            subList = gson.fromJson(in, listType);
+        } catch (FileNotFoundException e){
+            subList = new ArrayList<Subscription>();
+        }
+
+        for(Subscription s : subList){
+            totalCharge += s.getCharge();
+        }
+    }
 
 }

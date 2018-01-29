@@ -63,7 +63,7 @@ public class SubAdapter extends BaseAdapter {
         nameText.setText(sub.getName());
         dateText.setText("" + Subscription.getMonth(sub.getMonth())
          + " " + sub.getDay() + ", " + sub.getYear());
-        chargeText.setText("" + sub.getCharge());
+        chargeText.setText(String.format("$%.2f", sub.getCharge()));
 
 
         return subView;
