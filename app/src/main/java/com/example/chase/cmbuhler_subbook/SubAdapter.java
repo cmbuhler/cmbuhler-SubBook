@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 /**
  * Created by Chase on 2018-01-24.
+ *
+ * References:
+ *      https://www.raywenderlich.com/124438/android-listview-tutorial
+ *          Retrieved: 2018-01-28
  */
 
 public class SubAdapter extends BaseAdapter {

@@ -44,10 +44,14 @@ public class SubList {
         subList.add(sub);
     }
 
-    public void remove(Subscription sub){
-        totalCharge = totalCharge - sub.getCharge();
-        subList.remove(sub);
+    public void remove(int position){
+        totalCharge = totalCharge - subList.get(position).getCharge();
+        subList.remove(position);
         //Remove from file
+    }
+
+    public Subscription get(int position){
+        return subList.get(position);
     }
 
 

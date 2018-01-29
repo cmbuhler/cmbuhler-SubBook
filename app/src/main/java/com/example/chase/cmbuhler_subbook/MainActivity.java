@@ -1,5 +1,6 @@
 package com.example.chase.cmbuhler_subbook;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView subList;
+    private SubAdapter adapter;
+    private ListView subListView;
     private TextView totalChargeValue;
 
     @Override
@@ -23,7 +26,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         totalChargeValue = findViewById(R.id.totalChargeValue);
-        subList = findViewById(R.id.listView);
+        subListView = findViewById(R.id.listView);
+
+        adapter = new SubAdapter(this, SubList.getInstance().getSubList());
+        subListView.setAdapter(adapter);
+
+        final Context context = this;
+        subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Subscription subscription = SubList.getInstance().get(position);
+
+                Intent intent = new Intent(context, SubDetailsActivity.class);
+
+                intent.putExtra("sub_name", subscription.getName());
+                intent.putExtra("sub_charge", subscription.getCharge());
+                intent.putExtra("sub_year", subscription.getYear());
+                intent.putExtra("sub_month", subscription.getMonth());
+                intent.putExtra("sub_day", subscription.getDay());
+                intent.putExtra("sub_comment", subscription.getComment());
+                intent.putExtra("sub_pos", position);
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -36,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateList(){
 
         totalChargeValue.setText("$" + SubList.getInstance().getTotalCharge());
-        SubAdapter adapter = new SubAdapter(this, SubList.getInstance().getSubList());
-        subList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     /**

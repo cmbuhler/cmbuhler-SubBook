@@ -4,8 +4,10 @@
     <string name="new_sub">New Subscription</string>
     <string name="sub_name">Subscription Name</string>
     <string name="sub_data">Start date:</string>
-    <string name="sub_charge">Monthly Charge</string>
+    <string name="sub_charge">Monthly Charge:</string>
     <string name="sub_comment">Comment (Optional)</string>
     <string name="sub_add_button">Add</string>
     <string name="new_sub_help">Help</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete</string>
 </resources>
