@@ -111,5 +111,12 @@ public class Subscription {
         this.comment = comment;
     }
 
+    @Override
+    public Subscription clone(){
+        return new Subscription(this.name,
+                this.year, this.month, this.day,
+                this.charge, this.comment);
+    }
+
 
 }

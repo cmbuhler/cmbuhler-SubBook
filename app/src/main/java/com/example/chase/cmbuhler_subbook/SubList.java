@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public class SubList {
     private final static String FILENAME = "subdata.sav";
     private static SubList mySubList = new SubList();
-    private float totalCharge;
     private ArrayList<Subscription> subList;
     private Context context;
 
@@ -48,11 +47,15 @@ public class SubList {
     }
 
     public float getTotalCharge(){
-        return totalCharge;
+
+        float charge = 0;
+        for(Subscription sub: subList){
+            charge += sub.getCharge();
+        }
+        return charge;
     }
 
     public void add(String name, int year, int month, int day, float charge, String comment){
-        totalCharge = totalCharge + charge;
         Subscription sub = new Subscription(name, year, month, day, charge, comment);
         subList.add(sub);
         updateFile();
@@ -91,7 +94,6 @@ public class SubList {
     }
 
     public void remove(int position){
-        totalCharge = totalCharge - subList.get(position).getCharge();
         subList.remove(position);
         updateFile();
         //Remove from file
@@ -125,9 +127,6 @@ public class SubList {
             subList = new ArrayList<Subscription>();
         }
 
-        for(Subscription s : subList){
-            totalCharge += s.getCharge();
-        }
     }
 
 }

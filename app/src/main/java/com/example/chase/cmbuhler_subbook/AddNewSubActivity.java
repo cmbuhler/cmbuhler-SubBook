@@ -36,7 +36,6 @@ import java.util.Calendar;
 
 public class AddNewSubActivity extends AppCompatActivity {
 
-    private DatePicker datePicker;
     private Calendar calendar;
     private TextView date;
     private Button addButton;
@@ -49,9 +48,10 @@ public class AddNewSubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_sub);
-        addButton = findViewById(R.id.add_new_sub);
+        addButton = findViewById(R.id.button);
         date = (TextView) findViewById(R.id.sub_date);
         calendar = Calendar.getInstance();
+
 
         if(savedInstanceState == null){
             //Activity is being created for the first time
@@ -70,8 +70,8 @@ public class AddNewSubActivity extends AppCompatActivity {
         showDate(year, month, day);
         addButton.setOnClickListener(new Button.OnClickListener(){
             @Override
-            public void onClick(View button){
-                addNewSub(button);
+            public void onClick(View view){
+                addNewSub(view);
             }
         });
 
@@ -88,6 +88,11 @@ public class AddNewSubActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    /*
+     * DatePicker example:
+     * Retrieved 2018-01-22
+     * https://www.tutorialspoint.com/android/android_datepicker_control.htm
+     */
     public void setDate(View view){
         showDialog(999);
         Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT).show();
