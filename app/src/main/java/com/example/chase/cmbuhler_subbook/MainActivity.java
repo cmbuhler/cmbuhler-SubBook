@@ -1,4 +1,8 @@
 /*
+ * MainActivity
+ *
+ * February 4, 2018
+ *
  * Copyright © Chase Buhler, CMPUT301, University of Alberta - All rights reserved.
  * You may use, distribute, or modify this code under the terms and conditions of the
  * Code of Student Behaviour at the University of Alberta.
@@ -22,12 +26,23 @@ import android.widget.TextView;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/**
+ * Represents the main activity of SubBook
+ * This activity contains the ListView and it has A menu for selecting to add
+ * A new subscription.
+ *
+ * @author Chase Buhler
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ListView subListView;
     private TextView totalChargeValue;
     private SubAdapter adapter;
 
+    /**
+     * Creates the activity
+     * @param savedInstanceState Previous InstanceState (if applicable)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Updates the list every time the activity starts
+     */
     @Override
     protected void onStart(){
         super.onStart();
@@ -61,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         updateList();
     }
 
+    /**
+     * Updates the ListView and totalCharge
+     */
     private void updateList(){
 
         String dollarText = String.format("$%.2f", SubList.getInstance().getTotalCharge());
@@ -97,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Starts the activity associated with adding a new subscription
+     */
     public void startNewSubActivity(){
         Intent intent = new Intent(this, AddNewSubActivity.class);
         startActivity(intent);

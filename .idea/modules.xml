@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cmbuhlerSubBook.iml" filepath="$PROJECT_DIR$/cmbuhlerSubBook.iml" />
+      <module fileurl="file://C:\Users\Chase\Documents\Winter2018\CMPUT301\cmbuhler-SubBook\app\app.iml" filepath="C:\Users\Chase\Documents\Winter2018\CMPUT301\cmbuhler-SubBook\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cmbuhler-SubBook.iml" filepath="$PROJECT_DIR$/cmbuhler-SubBook.iml" />
+      <module fileurl="file://C:\Users\Chase\Documents\Winter2018\CMPUT301\cmbuhler-SubBook\cmbuhlerSubBook.iml" filepath="C:\Users\Chase\Documents\Winter2018\CMPUT301\cmbuhler-SubBook\cmbuhlerSubBook.iml" />
     </modules>
   </component>
 </project>

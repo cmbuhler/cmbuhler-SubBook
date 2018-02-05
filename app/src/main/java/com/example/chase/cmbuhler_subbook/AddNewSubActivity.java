@@ -1,4 +1,8 @@
 /*
+ * AddNewSubActivity
+ *
+ * February 4, 2018
+ *
  * Copyright © Chase Buhler, CMPUT301, University of Alberta - All rights reserved.
  * You may use, distribute, or modify this code under the terms and conditions of the
  * Code of Student Behaviour at the University of Alberta.
@@ -6,16 +10,6 @@
  */
 
 package com.example.chase.cmbuhler_subbook;
-
-/*
- * Created by Chase Buhler
- *
- * DatePicker example:
- * Retrieved 2018-01-22
- * https://www.tutorialspoint.com/android/android_datepicker_control.htm
- *
- */
-
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -37,7 +31,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-
+/**
+ * Represents the activity the user sees when adding a new subscription
+ *
+ * @author Chase Buhler
+ */
 public class AddNewSubActivity extends AppCompatActivity {
 
     static final String STATE_YEAR = "subYear";
@@ -50,7 +48,11 @@ public class AddNewSubActivity extends AppCompatActivity {
     private int month;
     private int day;
 
-
+    /**
+     * Creates the AddNewSubActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,10 @@ public class AddNewSubActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Save some values from the edit texts in this activity during restarts
+     * @param savedInstanceState the Bundle that is going to save the instance state.
+     */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         //Save current date for persistence between activity restarts
@@ -100,10 +106,21 @@ public class AddNewSubActivity extends AppCompatActivity {
      * Retrieved 2018-01-22
      * https://www.tutorialspoint.com/android/android_datepicker_control.htm
      */
+
+    /**
+     * Sets the date
+     * @param view view
+     */
     public void setDate(View view){
         showDialog(999);
         Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT).show();
     }
+
+    /**d
+     * Create the dialog that displays the DatePicker
+     * @param id id
+     * @return datePicker Dialog
+     */
     @Override
     protected Dialog onCreateDialog(int id){
         if(id == 999){
@@ -120,6 +137,17 @@ public class AddNewSubActivity extends AppCompatActivity {
                     showDate(i, i1, i2);
                 }
             };
+
+    /**
+     * Shows the date in the TextView
+     */
+    private void showDate(int year, int month, int day){
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        date.setText(new StringBuilder().append(Subscription.getMonth(month)).append(" " + day +
+                ", " + year));
+    }
 
     /**
      * Called when the add button is pressed.
@@ -171,18 +199,5 @@ public class AddNewSubActivity extends AppCompatActivity {
             );
         }
         finish();
-
     }
-
-    private void showDate(int year, int month, int day){
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        date.setText(new StringBuilder().append(Subscription.getMonth(month)).append(" " + day +
-                ", " + year));
-    }
-
-
-
-
 }

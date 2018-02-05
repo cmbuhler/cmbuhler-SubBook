@@ -42,6 +42,11 @@ public class EditSubActivity extends AppCompatActivity {
 
     private TextView date;
 
+    /**
+     * Creates the EditSubActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,11 +130,21 @@ public class EditSubActivity extends AppCompatActivity {
      * Retrieved 2018-01-22
      * https://www.tutorialspoint.com/android/android_datepicker_control.htm
      */
+
+    /**
+     * Sets the date
+     * @param view view
+     */
     public void setDate(View view){
         showDialog(999);
         Toast.makeText(getApplicationContext(), "Pick a Date", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Create the dialog that displays the DatePicker
+     * @param id id
+     * @return datePicker Dialog
+     */
     @Override
     protected Dialog onCreateDialog(int id){
         if(id == 999){
@@ -138,6 +153,7 @@ public class EditSubActivity extends AppCompatActivity {
         }
         return null;
     }
+
 
     private DatePickerDialog.OnDateSetListener myDateListener =
             new DatePickerDialog.OnDateSetListener() {
@@ -150,6 +166,9 @@ public class EditSubActivity extends AppCompatActivity {
                 }
             };
 
+    /**
+     * Shows the date in the TextView
+     */
     private void showDate(){
         date.setText(new StringBuilder().append(Subscription.getMonth(newSub.getMonth()))
                 .append(" " + newSub.getDay() + ", " + newSub.getYear()));
