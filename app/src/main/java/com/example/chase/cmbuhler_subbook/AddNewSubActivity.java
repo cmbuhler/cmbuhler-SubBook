@@ -44,7 +44,6 @@ public class AddNewSubActivity extends AppCompatActivity {
     private Calendar calendar;
     private TextView date;
     private Button addButton;
-    private int year;
     private int month;
     private int day;
 
