@@ -1,7 +1,7 @@
 # cmbuhler-SubBook
 Assignment 1 - SubBook for CMPUT 301 Winter 2018
 
-Link to YouTube video demo: https://github.com/cmbuhler/cmbuhler-SubBook.git
+Link to YouTube video demo: https://www.youtube.com/watch?v=g4WDcbNtZlI
 
 References:
 
