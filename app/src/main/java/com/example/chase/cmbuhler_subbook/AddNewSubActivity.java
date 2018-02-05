@@ -1,10 +1,14 @@
+/*
+ * Copyright © Chase Buhler, CMPUT301, University of Alberta - All rights reserved.
+ * You may use, distribute, or modify this code under the terms and conditions of the
+ * Code of Student Behaviour at the University of Alberta.
+ * You can find a copy of the license in this project. Otherwise please contact cmbuhler@ualberta.ca
+ */
+
 package com.example.chase.cmbuhler_subbook;
 
 /*
  * Created by Chase Buhler
- *
- * Additional examples and pieces of code from
- * tutorialspoint.com:
  *
  * DatePicker example:
  * Retrieved 2018-01-22
@@ -36,13 +40,16 @@ import java.util.Calendar;
 
 public class AddNewSubActivity extends AppCompatActivity {
 
-    private Calendar calendar;
-    private TextView date;
-    private Button addButton;
-    private int year, month, day;
     static final String STATE_YEAR = "subYear";
     static final String STATE_MONTH = "subMonth";
     static final String STATE_DAY = "subDay";
+    private Calendar calendar;
+    private TextView date;
+    private Button addButton;
+    private int year;
+    private int month;
+    private int day;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,11 +128,10 @@ public class AddNewSubActivity extends AppCompatActivity {
      * object to the SubList and finishes the Activity.
      * If some of the entered values are bad, the user
      * is notified and asked to re enter the bad values.
-     * @param view view Clicked
+     * @param view Button clicked
      */
     public void addNewSub(View view){
         String name = "";
-        String comment = "";
         float charge = 0.0f;
         boolean isGoodInput = true;
 
@@ -166,13 +172,6 @@ public class AddNewSubActivity extends AppCompatActivity {
         }
         finish();
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.new_sub_menu, menu);
-        return true;
     }
 
     private void showDate(int year, int month, int day){

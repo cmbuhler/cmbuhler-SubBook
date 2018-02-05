@@ -1,3 +1,10 @@
+/*
+ * Copyright © Chase Buhler, CMPUT301, University of Alberta - All rights reserved.
+ * You may use, distribute, or modify this code under the terms and conditions of the
+ * Code of Student Behaviour at the University of Alberta.
+ * You can find a copy of the license in this project. Otherwise please contact cmbuhler@ualberta.ca
+ */
+
 package com.example.chase.cmbuhler_subbook;
 
 import android.content.Context;
@@ -38,20 +45,11 @@ public class MainActivity extends AppCompatActivity {
         subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Subscription subscription = SubList.getInstance().get(position);
-
                 Intent intent = new Intent(context, SubDetailsActivity.class);
 
-                intent.putExtra("sub_name", subscription.getName());
-                intent.putExtra("sub_charge", subscription.getCharge());
-                intent.putExtra("sub_year", subscription.getYear());
-                intent.putExtra("sub_month", subscription.getMonth());
-                intent.putExtra("sub_day", subscription.getDay());
-                intent.putExtra("sub_comment", subscription.getComment());
                 intent.putExtra("sub_pos", position);
 
                 startActivity(intent);
-
             }
         });
     }
